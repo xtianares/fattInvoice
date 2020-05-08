@@ -1,0 +1,84 @@
+/* --------------------------------------------------------------
+    Import CCS Dependencies
+-------------------------------------------------------------- */
+@import 'default';
+
+/* ----------------------------------------------------------------------------
+    Project Styles
+----------------------------------------------------------------------------- */
+html {
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+body {
+  height: 100%;
+  font-family: 'Open Sans', 'Trebuchet MS', Verdana, Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+  color: #555;
+  background-color: #ffffff;
+  // background-image: linear-gradient(to right bottom, #6c6bd1, #6d77d7, #7083dc, #758fe0, #7b9ae3, #73a7ec, #6db3f3, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  // background-size: cover;
+  // background-position: 50% 50%;
+  // background-attachment: fixed;
+  background-repeat: repeat;
+  overflow-y: scroll;
+}
+.container {
+  max-width: 1200px;
+}
+.container-fluid.but-fixed {
+  max-width: 1230px;
+}
+#footer-wrap {
+  margin-top: 1rem;
+  border-top: 1px solid #dfdfdf;
+  color: #bcbcbc;
+  font-size: .9rem;
+}
+
+@keyframes placeHolderShimmer{
+  0%{
+      background-position: -468px 0
+  }
+  100%{
+      background-position: 468px 0
+  }
+}
+.animated-placeholder {
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  position: relative;
+}
+
+/* ----------------------------------------------------------------------------
+	Page Media Queries
+----------------------------------------------------------------------------- */
+/* Small devices (landscape phones, 576px and up) - col-sm-* */
+@media (min-width: 36em) {
+  
+}
+ /* Medium devices (tablets, 768px and up) - col-md-* */
+@media (min-width: 48em) {
+
+}
+ /* Large devices (desktops, 992px and up) - col-lg-* */
+@media (min-width: 62em) {
+
+}
+/* Medium large devices (medium desktops, 1080px and up) */
+@media (min-width: 67.7em) {
+
+}
+/* Extra large devices (large desktops, 1200px and up) - col-xl-* */
+@media (min-width: 75em) { 
+
+}

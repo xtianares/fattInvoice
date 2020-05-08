@@ -1,0 +1,51 @@
+#header-wrap {
+  background-color: #1976D2;
+  color: #fff;
+}
+a[href^="tel:"] {
+  color: inherit;
+  border: 0;
+}
+#header {
+  width: 100%;
+  a.logo {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border: 0;
+    width: 75%;
+    max-width: 360px; /* change this to the width of the actual logo */
+    color: #fff;
+    text-decoration: none;
+    img {
+      margin-right: 10px;
+      vertical-align: middle;
+      width: auto;
+      max-width: 40px;
+    }
+    span {
+      font-size: 1.5rem;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+#header {
+  color: #fff;
+  .demo-by {
+    display: inline-block;
+    vertical-align: middle;
+    a {
+      color: #fff;
+    }
+  }
+}
+
+@media (min-width: 36em) { /* Small devices (landscape phones, 576px and up) - col-sm-* */
+
+}
+@media (min-width: 48em) { /* Medium devices (tablets, 768px and up) - col-md-* */
+
+}
+@media only screen and (min-width: 56.25em) { /* roughtly 900px/16px */
+
+}

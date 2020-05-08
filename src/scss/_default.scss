@@ -1,0 +1,106 @@
+/* ----------------------------------------------------------------------------
+	Typography
+----------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5 {
+	/*margin: 25px 0 15px 0;*/
+	margin: 1.2em 0 0.5em 0;
+	padding: 0;
+  color: #444444;
+  font-family: 'Roboto Slab', 'Open Sans', 'Trebuchet MS', Verdana, Arial, Helvetica, sans-serif;
+	font-weight: 400;
+	text-rendering: optimizeLegibility;
+	line-height: 1.4;
+}
+h1, .h1 { font-size: 1.602em; margin-top: 0; }
+h2, .h2 { font-size: 1.424em; }
+h3, .h3 { font-size: 1.266em; }
+h4, .h4 { font-size: 1.125em; }
+h5, .h5 { font-size: 1em; }
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: #1982d1; }
+p { margin: 0 0 1.3em 0; }
+a { color: #1982d1; text-decoration: none; outline: none !important; }
+a:hover, a:active { text-decoration: underline; /*border-width: 0 0 1px 0; border-style: dotted;*/ -webkit-tap-highlight-color: rgba(0,0,0,0); }
+a.img:hover, a.img:active { text-decoration: none; border: 0; }
+a[href^="tel:"] { color: inherit; border: 0; text-decoration: none; }
+
+@media (min-width: 48em) { /* Medium devices (tablets, 768px and up) */
+  h1, .h1 { font-size: 1.8em; }
+	h2, .h2 { font-size: 1.55em; }
+	h3, .h3 { font-size: 1.32em; }
+	h4, .h4 { font-size: 1.125em; }
+	h5, .h5 { font-size: 1em; }
+}
+@media (min-width: 62em) { /* Large devices (desktops, 992px and up) */
+	h1, .h1 { font-size: 2.074em; }
+	h2, .h2 { font-size: 1.728em; }
+	h3, .h3 { font-size: 1.44em; }
+	h4, .h4 { font-size: 1.2em; }
+	h5, .h5 { font-size: 1.1em; }
+}
+@media (min-width: 75em) { /* Extra large devices (large desktops, 1200px and up) */
+	h1, .h1 { font-size: 2.441em; }
+	h2, .h2 { font-size: 1.953em; }
+	h3, .h3 { font-size: 1.563em; }
+	h4, .h4 { font-size: 1.25em; }
+	h5, .h5 { font-size: 1.1em; }
+}
+
+/* ----- My Bootstrap Overrides ----- */
+.form-control:focus,
+.custom-select:focus {
+  box-shadow: none;
+}
+b, strong {
+  font-weight: 600;
+}
+.modal-header {
+	padding-top: .75rem;
+	padding-bottom: .75rem;
+	h1,
+	h2,
+	h3,
+	h4,
+	h5 {
+		margin-top: 0;
+		font-weight: 400;
+		color: #333333;
+	}
+} 
+input[type=number] {
+	appearance: textfield;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input::placeholder{
+  color: #e0e0e0 !important;
+}
+.custom-control {
+	&.is-invalid, &:invalid {
+		.custom-control-input ~ .custom-control-label {
+			color: var(--red);
+		}
+		.custom-control-input ~ .custom-control-label:before {
+			border-color: var(--red);
+		}
+		.custom-control-input:focus ~ .custom-control-label:before {
+			box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+		}
+	}
+}
+.form-control {
+	&:invalid:focus, &.is-invalid:focus {
+		border-color: #80bdff;
+		box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+		background-image: none;
+	}
+}
+.custom-select {
+	&:invalid:focus, &.is-invalid:focus {
+		border-color: #80bdff;
+		box-shadow: none;
+		background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e");
+	}
+}
