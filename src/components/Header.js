@@ -5,9 +5,7 @@ import {
   Col
 } from 'reactstrap';
 
-import "./style.scss";
-
-import logo from "../../assets/images/xtianares.png";
+import logo from "../assets/images/xtianares.png";
 
 function Header() {  
   return (

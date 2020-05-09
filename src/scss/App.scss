@@ -33,12 +33,55 @@ body {
   max-width: 1230px;
 }
 #footer-wrap {
-  margin-top: 1rem;
   border-top: 1px solid #dfdfdf;
   color: #bcbcbc;
   font-size: .9rem;
 }
 
+#header-wrap {
+  background-color: #1976D2;
+  color: #fff;
+}
+a[href^="tel:"] {
+  color: inherit;
+  border: 0;
+}
+#header {
+  width: 100%;
+  a.logo {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border: 0;
+    width: 100%;
+    max-width: 360px; /* change this to the width of the actual logo */
+    color: #fff;
+    text-decoration: none;
+    img {
+      margin-right: 10px;
+      vertical-align: middle;
+      width: auto;
+      max-width: 40px;
+    }
+    span {
+      font-size: 1.3rem;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+#header {
+  color: #fff;
+  .demo-by {
+    display: none;
+    vertical-align: middle;
+    a {
+      color: #fff;
+    }
+  }
+}
+span.remove-item {
+  cursor: pointer;
+}
 @keyframes placeHolderShimmer{
   0%{
       background-position: -468px 0
@@ -64,10 +107,16 @@ body {
 ----------------------------------------------------------------------------- */
 /* Small devices (landscape phones, 576px and up) - col-sm-* */
 @media (min-width: 36em) {
-  
+  #headaer a.logo span {
+    font-size: 1.5rem;
+  }
+
 }
  /* Medium devices (tablets, 768px and up) - col-md-* */
 @media (min-width: 48em) {
+  #header .demo-by {
+    display: inline-block;
+  }
 
 }
  /* Large devices (desktops, 992px and up) - col-lg-* */
