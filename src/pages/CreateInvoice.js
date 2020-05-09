@@ -22,6 +22,8 @@ class CreateInvoice extends Component {
     invoiceDiscount: 0,
     itemList: [],
     customerList: [],
+    itemListPages: 1,
+    customerListPages: 1,
     lineItems: [],
     // start item tempInfo
     itemId: '', // optional
@@ -43,11 +45,15 @@ class CreateInvoice extends Component {
       API.getCustomers(),
     ])
     .then(axios.spread((items, customers) => {
-
       this.setState({
         itemList: items.data.data,
         customerList: customers.data.data,
+        itemListPages: items.data.last_page,
+        customerListPages: customers.data.last_page,
+        itemListCurrentPage: items.data.current_page,
+        customerListCurrentPage: customers.data.current_page,
       }, () => {
+        console.log(this.state)
         // console.log(this.state.itemList)
         // console.log(this.state.customerList)
       })
@@ -64,6 +70,24 @@ class CreateInvoice extends Component {
     this.setState({
       [name]: theValue
     }, () => {
+      if (name === "customerId" && value === "loadmore") {
+        API.getCustomers(this.state.customerListCurrentPage).then(customers => {
+          this.setState({
+            customerId: "",
+            customerList: [...this.state.customerList, ...customers.data.data],
+            customerListPages: customers.data.last_page,
+            customerListCurrentPage: customers.data.current_page,
+          }, () => {
+            console.log(this.state)
+            // console.log(this.state.itemList)
+            // console.log(this.state.customerList)
+          })
+        })
+        .catch(err => {
+          if (err.response?.status > 400) { console.log(err.response?.status, err.response?.statusText) }
+          else { console.log(err.response?.data?.errors) }
+        });
+      }
       // console.log(this.state);
     });
   }
@@ -75,12 +99,29 @@ class CreateInvoice extends Component {
     // console.log("theItem:", theItem)
     this.setState({
       [name]: value,
-      itemItem: theItem.item,
+      itemItem: theItem?.item,
       itemQuantity: 1,
-      itemDetails: theItem.details,
-      itemPrice: theItem.is_discount ? `-${theItem.price?.toFixed(2)}` : theItem.price?.toFixed(2) || 0,
+      itemDetails: theItem?.details,
+      itemPrice: theItem?.is_discount ? `-${theItem?.price?.toFixed(2)}` : theItem?.price?.toFixed(2) || 0,
     }, () => {
-      // console.log(this.state);
+      if (name === "itemId" && value === "loadmore") {
+        API.getItems(this.state.itemListCurrentPage).then(items => {
+          this.setState({
+            itemId: "",
+            itemList: [...this.state.itemList, ...items.data.data],
+            itemListPages: items.data.last_page,
+            itemListCurrentPage: items.data.current_page,
+          }, () => {
+            console.log(this.state)
+            // console.log(this.state.itemList)
+            // console.log(this.state.customerList)
+          })
+        })
+        .catch(err => {
+          if (err.response?.status > 400) { console.log(err.response?.status, err.response?.statusText) }
+          else { console.log(err.response?.data?.errors) }
+        });
+      }
     });
   }
 
@@ -204,9 +245,9 @@ class CreateInvoice extends Component {
     const customerOptions = this.state.customerList.map((customer, index) => (
       <option key={index} value={customer.id}>{customer.firstname} {customer.lastname}</option>
     ));
-    const itemOptions = this.state.itemList.map((item, index) => (
-      <option key={index} value={item.id}>{item.item}</option>
-    ));
+    const itemOptions = this.state.itemList.map((item, index) => {
+      return <option key={index} value={item.id}>{item.item}</option>
+    });
     const invoiceTotal = Number(this.state.invoiceTotal) < 0 ? `($${Number(this.state.invoiceTotal).toFixed(2).replace("-","")})` : `$${Number(this.state.invoiceTotal).toFixed(2)}`
     const itemList = this.state.itemList
     const lineItems = this.state.lineItems.map((item, index) => {
@@ -239,6 +280,7 @@ class CreateInvoice extends Component {
                   <CustomInput onChange={this.handleChange} value={this.state.customerId} type="select" name="customerId" id="customerId">
                     <option value="">Choose Customer</option>
                     {customerOptions}
+                    { this.state.customerListPages > 1 && this.state.customerListPages > this.state.customerListCurrentPage ? <option value="loadmore">Load More...</option> : null }
                   </CustomInput>
                 </FormGroup>
                 <FormGroup className="col-md-6">
@@ -251,11 +293,36 @@ class CreateInvoice extends Component {
                   <CustomInput onChange={this.handleItemChange} value={this.state.itemId} type="select" name="itemId" id="itemId">
                     <option value="">Choose Item</option>
                     {itemOptions}
+                    { this.state.itemListPages > 1 && this.state.itemListPages > this.state.itemListCurrentPage ? <option value="loadmore">Load More...</option> : null }
                   </CustomInput>
                 </FormGroup>
                 <FormGroup className="col-md-2">
                   <Label htmlFor="itemQuantity">Quantity</Label>
-                  <Input onChange={this.handleChange} value={this.state.itemQuantity} type="text" name="itemQuantity" id="itemQuantity" />
+                  {/* <Input onChange={this.handleChange} value={this.state.itemQuantity} type="text" name="itemQuantity" id="itemQuantity" /> */}
+                  <CustomInput onChange={this.handleChange} value={this.state.itemQuantity} type="select" name="itemQuantity" id="itemQuantity">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                  </CustomInput>
+
                 </FormGroup>
                 <FormGroup className="col-md-2">
                   <Label htmlFor="itemPrice">Unit Price</Label>
@@ -268,7 +335,7 @@ class CreateInvoice extends Component {
                 </FormGroup>
                 
                 <FormGroup className="col-md-2 d-flex">
-                  <Button className="add-item align-self-end" color="success" outline type="button" onClick={() => this.addItem()}>Add Item</Button>
+                  <Button className="add-item align-self-end" color="primary" type="button" onClick={() => this.addItem()}>Add Item</Button>
                 </FormGroup>
               </div>
 

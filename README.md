@@ -22,6 +22,8 @@ The user is expected to select a customer and have at least one line item in the
 
 ## What's going on behind the scene when a user adds an item to the invoice?
 
+The user have ability to load more customers or items by selecting the "Load More..." option on the corresponding dropdown. Selecting "Load More..." will trigger an API call to get the next set of either the customer or item list and insert the result into the array of customers or items.
+
 The moment a user selects an item from the items dropdown, it initializes the default amount to 1 and at the same time displays the unit price on the corresponding field. It does that by using the item ID as a key to grab the item's data from the items array that was created when the page initially loaded, it then grabs the price then sets that as a temporary item price together with the item ID and quantity. Once the user clicks the "Add Item" button it creates an item object and pushes that object into the line items array, and then clears out the teporary item details. It repeats this process for other items that are added to the invoice. When a user submits the invoice the line items array gets added to the API payload together with the computed subtotal and total amounts before it hits the post API endpoint.
 
 ## Tools Used
