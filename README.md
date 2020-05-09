@@ -16,7 +16,7 @@ The app allows users to create invoices from predefined items coming from the AP
 
 ## How the app works?
 
-When the app loads it will make an API call to fetch the customer and item data. That dats is then loaded into the corresponding dropdowns on the page.
+When the app loads it will make an API call to fetch the customers and itema data. That data is then loaded into the corresponding dropdowns on the page.
 
 The user is expected to select a customer and have at least one line item in the invoice, otherwise it will not allow the user to submit the invoice. A user can select the item from the a dropdown and it will auto populate the quantity to 1 and will show the price of the item. Once a user click te "Add Item" button the item will be added into a list of item (this is an array), this will also automatically compute for the item total and the invoice total. The user will also have the option to remove an item from the list by click the "Remove Item" next to the item name. It will also take into account if the added item is a discount item.
 
