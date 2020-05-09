@@ -4,11 +4,11 @@ This demo was bootstrapped with [Create React App](https://github.com/facebook/c
 
 To run the app locally, you will intall all the dependencies, run the command below in the project directory to install them.
 
-### `npm instal`
+`npm instal`
 
 Run the command below in the project directory to start the app locally in the development mode, it will automatically open [http://localhost:3000](http://localhost:3000) in your default browser:
 
-### `npm start`
+`npm start`
 
 ## What does the app do?
 
@@ -33,4 +33,4 @@ Axios\
 Node Sass\
 Bootstrap 4\
 ReactStrap\
-react-router-dom\
+react-router-dom
