@@ -297,6 +297,15 @@ class CreateInvoice extends Component {
                   </CustomInput>
                 </FormGroup>
                 <FormGroup className="col-md-2">
+                  <Label htmlFor="itemPrice">Unit Price</Label>
+                  <div className="input-group">
+                    <div className="input-group-prepend">
+                      <span className="input-group-text">$</span>
+                    </div>
+                    <Input onChange={this.handleChange} value={this.state.itemPrice} type="text" name="itemPrice" id="itemPrice" disabled />
+                  </div>
+                </FormGroup>
+                <FormGroup className="col-md-2">
                   <Label htmlFor="itemQuantity">Quantity</Label>
                   {/* <Input onChange={this.handleChange} value={this.state.itemQuantity} type="text" name="itemQuantity" id="itemQuantity" /> */}
                   <CustomInput onChange={this.handleChange} value={this.state.itemQuantity} type="select" name="itemQuantity" id="itemQuantity">
@@ -322,18 +331,7 @@ class CreateInvoice extends Component {
                     <option value="19">19</option>
                     <option value="20">20</option>
                   </CustomInput>
-
-                </FormGroup>
-                <FormGroup className="col-md-2">
-                  <Label htmlFor="itemPrice">Unit Price</Label>
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text">$</span>
-                    </div>
-                    <Input onChange={this.handleChange} value={this.state.itemPrice} type="text" name="itemPrice" id="itemPrice" disabled />
-                  </div>
-                </FormGroup>
-                
+                </FormGroup>                
                 <FormGroup className="col-md-2 d-flex">
                   <Button className="add-item align-self-end" color="primary" type="button" onClick={() => this.addItem()}>Add Item</Button>
                 </FormGroup>
